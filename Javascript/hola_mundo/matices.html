@@ -1,0 +1,56 @@
+<script type="text/javascript">
+//Vectores
+var aDias = new Array ('lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo')
+
+var aDias2 = new Array()
+aDias2[0] = 'Lunes'
+aDias2[1] = 'Martes'
+aDias2.push('Miercoles')
+//Eliminar un elemento -> Quito Martes
+aDias.splice(1,1);
+
+alert(aDias[0])
+
+//Matrices
+var aMatriz1 = new Array ()
+aMatriz1[0] = new Array ('Clase1', 'Clase2', 'Clase3')
+aMatriz1[1] = new Array ('Clase4', 'Clase5', 'Clase6')
+aMatriz1[2] = new Array ('Clase7', 'Clase8', 'Clase9')
+
+var aMatriz2 = new Array(
+	new Array('Clase1', 'Clase2', 'Clase3'),
+	new Array('Clase4', 'Clase5', 'Clase6'),
+	new Array('Clase7', 'Clase8', 'Clase9'))
+alert(aMatriz2[0][1])
+
+/* Otra forma */
+var aMatrizBase = new Array();
+var aClase1 = new Array('Clase1', 'Clase2', 'Clase3');
+var aClase2 = new Array('Clase4', 'Clase5', 'Clase6');
+var aClase3 = new Array('Clase7', 'Clase8', 'Clase9');
+
+aMatrizBase.push(aClase1);
+aMatrizBase.push(aClase2);
+aMatrizBase.push(aClase3);
+
+/* Crear con un bucle */
+//Matriz base
+var aMatriz100 = new Array();
+//Longitud de valores
+var iLong = 100;
+//Contador (opcional)
+var iCont = 0;
+
+//Bucle anidado
+for(var i = 0; i < iLong; i++) {
+	//Genera nuevas arrays por fila
+	aMatriz100[i] = new Array();
+	for(var j = 0; j < iLong; j++) {
+		iCont++;
+		aMatriz100[i][j] = 'Clase' + iCont;
+	}
+}
+console.log(aMatriz100[0][4]);
+
+
+</script>

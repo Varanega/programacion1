@@ -1,0 +1,19 @@
+{% extends 'layouts/master.html' %}
+{% block title %}Nuevo producto{% endblock %}
+{% block body %}
+
+{% for campo, errores in todos_errores %}
+    {% for error in errores %}
+        <div class="alert alert-danger"><strong>{{ campo | capitalize}}: {{ error }}</strong></div>
+    {% endfor %}
+{% endfor %}
+
+<form action="{{ url_for('new_product') }}" method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <p>{{ form.nombre.label }} {{ form.nombre() }}</p>
+    <p>{{ form.precio.label }} {{ form.precio() }}</p>
+    <p>{{ form.descripcion.label }} {{ form.descripcion() }}</p>
+    <p>{{ form.imagen.label }} {{ form.imagen() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

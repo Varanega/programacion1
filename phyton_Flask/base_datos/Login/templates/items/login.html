@@ -1,0 +1,27 @@
+{% extends 'layouts/master.html' %}
+{% block title %}Curriculum Vitae{% endblock %}
+{% block body %}
+    <div class="container">
+        <section>
+            <div class="jumbotron">
+                <h1>Curriculum vitae</h1>
+                <h2>Verónica Aranega</h2>
+                <h2>26/01/1995</h2>
+            </div>
+        </section>
+        <section>
+            <h2>Experiencia</h2><a href="{{ url_for('add') }}" class="btn btn-success">New</a>
+            {% if experiencia %}
+                {% for item in experiencia %}
+                    <div class="panel panel-default">
+                      <div class="panel-heading"> {{ item.empresa }} - {{ item.anyo_inicio }} al {{ item.anyo_salida }}
+                          <a href="{{ url_for('borrar_experiencia', id=item.id) }}" class="btn btn-danger">Borrar</a> </div>
+                      <div class="panel-body">
+                        {{ item.puesto }}
+                      </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </section>
+    </div>
+{% endblock %}

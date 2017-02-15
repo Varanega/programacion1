@@ -1,0 +1,37 @@
+$color_white: white;
+$color_black: black;
+$color_grey: grey;
+
+body{
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
+}
+#form{
+	text-align: center;
+    margin: 5em;
+    display: flex;
+    justify-content: center;
+   	input, button {
+   		&:focus{
+	    	outline: 0;
+	    	box-shadow: none;
+	    	border-color: $color_grey;
+	    }
+   	}
+    #nombre{
+    	width: 20em;
+    	margin-right: 2em;
+    }
+}
+table {
+	thead{
+		#titulo {
+			text-align: center;
+			font-size: 2em;
+		}
+	}
+	tbody{
+		text-align: center;
+	}
+}

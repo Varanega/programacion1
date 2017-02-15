@@ -1,0 +1,16 @@
+{% extends 'layouts/master.html' %}
+{% block title %}Signup{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Signup</h1>
+        <form method="post" action="">
+            {{ form.csrf_token }}
+            <p>{{ form.name.label }}{{ form.name(class="form-control") }}</p>
+            <p>{{ form.email.label }}{{ form.email(class="form-control") }}</p>
+            <p>{{ form.password.label }}{{ form.password(class="form-control") }}</p>
+            <p>{{ form.password2.label }}{{ form.password2(class="form-control") }}</p>
+            <p>{{ form.submit(class="btn btn-success", value='Registro') }}</p>
+        </form>
+        <a href="{{ url_for('login') }}" class="btn btn-primary">Volver</a>
+    </div>
+{% endblock %}

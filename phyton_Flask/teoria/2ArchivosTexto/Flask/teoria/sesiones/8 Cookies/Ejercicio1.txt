@@ -1,0 +1,5 @@
+Realiza un carrito de compra
+
+# Pista
+for key, value in enumerate(request.cookies):
+ 

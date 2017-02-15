@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ListComp</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div class="container">
+		<form id=form>
+			<input id="nombre" type="text" name="nombre" class="form-control" placeholder="Introduzca el producto">
+			<button type="submit" onclick="add()" class="btn btn-primary">Añadir</button>
+		</form>
+		<table>
+			<thead>
+				<tr>
+					<th id="titulo">¿Que hay que comprar?</th>
+				</tr>
+			</thead>
+			<tbody id="todas_compras">
+			</tbody>
+	</table>
+	</div>
+	<script>
+		let compras = [];
+
+		let add = function() {
+			let campo_nombre = document.querySelector('#nombre');
+			let todas_compras = document.querySelector('#todas_compras');
+			console.log(campo_nombre.value);
+
+			//Almacenamos
+			compras.push({nombre: campo_nombre.value});
+
+			// Imprimimos
+			let html = '';
+			for(cosas of compras) {
+				html += '<tr><td>' + cosas.nombre + '</td></tr>'
+			}
+			todas_compras.innerHTML = html;
+		}
+	</script>
+</body>
+</html>

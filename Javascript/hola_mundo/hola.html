@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="viaje" type="text" name="viaje">
+	<button onclick="add()">Add</button>
+	<ul id="lista">
+	</ul>
+	<script>
+		let mis_viajes = [];
+
+		let add = function() {
+			let campo_text = document.querySelector('#viaje');
+			let lista = document.querySelector('#lista');
+			let html_viajes = '';
+			// obtenemos y guardamos el dato
+			mis_viajes.push(campo_text.value);
+			// imprimimos
+			for(viaje of mis_viajes) { // Generamos el HTML
+				html_viajes += '<li>' + viaje + '</li>';
+			}
+			lista.innerHTML = html_viajes; // Lo introducimos en #lista
+			campo_text.value = ''; // Limpiamos el texto del input
+		}
+	</script>
+</body>
+</html>

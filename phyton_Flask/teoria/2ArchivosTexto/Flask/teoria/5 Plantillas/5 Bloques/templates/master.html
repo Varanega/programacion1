@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+	<title>Mi sitio - {% block titulo %}{% endblock %}</title>
+	<body>
+		<nav>
+			<p><a href="/">Inicio</a> <a href="/final">Final</a></p>
+		</nav>
+		<p>
+			{% block cuerpo %}{% endblock %}
+		</p>
+		<footer>2016 Flask</footer>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+<div class="container">
+<h1>Mis notas</h1>
+<a href="{{ url_for('new_note') }}" class="btn btn-success">New</a>
+{% if notas %}
+<table class="table">
+    {% for item in notas %}
+        <tr>
+            <td>{{ item.title }}</td>
+            <td><a href="{{ url_for('view_note', id=item.id) }}" class="btn btn-primary">Ver</a></td>
+            <td><a href="{{ url_for('edit_note', id=item.id) }}" class="btn btn-primary">Editar</a></td>
+            <td><a href="{{ url_for('delete_note', id=item.id) }}" class="btn btn-danger">Borrar</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+</div>
+{% endblock %}

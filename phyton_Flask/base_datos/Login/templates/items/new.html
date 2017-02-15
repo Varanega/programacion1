@@ -1,0 +1,15 @@
+{% extends 'layouts/master.html' %}
+{% block title %}Nueva experiencia{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Nueva Experiencia</h1>
+        <form method="post" action="">
+            {{ form.csrf_token }}
+            <p>{{ form.empresa.label }}{{ form.empresa(class="form-control") }}</p>
+            <p>{{ form.puesto.label }}{{ form.puesto(class="form-control") }}</p>
+            <p>{{ form.anyo_inicio.label }}{{ form.anyo_inicio(class="form-control") }}</p>
+            <p>{{ form.anyo_salida.label }}{{ form.anyo_salida(class="form-control") }}</p>
+            <p>{{ form.submit(class="btn btn-warming") }}</p>
+        </form>
+    </div>
+{% endblock %}

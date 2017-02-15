@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+	<body>
+		<p>
+			Bienvenido 
+			{% if nombre %}
+				{{ nombre }}
+			{% else %}
+				desconocido
+			{% endif %}
+		</p>
+		<p>
+			<form action="/" method="post">
+				<input id="nombre" type="text" name="nombre">
+				<input type="submit">
+			</form>
+		</p>
+	</body>
+</html>

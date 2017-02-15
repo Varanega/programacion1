@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<form action="#" method="post">
+		{{ form.csrf_token }}
+		{{ form.name.label }}{{ form.name() }}<br>	
+		{{ form.age.label }}{{ form.age(class='form-control') }}<br>
+		{{ form.email.label }}{{ form.email() }}<br>
+		{{ form.submit() }}
+	</form>		
+</body>
+</html>

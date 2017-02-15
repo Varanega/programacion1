@@ -1,0 +1,28 @@
+{% extends 'layouts/master.html' %}
+{% block title %}Profile Edit{% endblock %}
+{% block body %}
+
+{% for campo, errores in todos_errores %}
+    {% for error in errores %}
+        <div class="alert alert-danger"><strong>{{ campo | capitalize}}: {{ error }}</strong></div>
+    {% endfor %}
+{% endfor %}
+<div class="container">
+    <div id="edit-title">
+        <h1>Edit your profile</h1>
+    </div>
+    <form action="{{ url_for('new_product') }}" method="post" enctype="multipart/form-data" class="form">
+        {{ form.csrf_token }}
+        <p>{{ form.nombre.label }} {{ form.nombre(class='form-control') }}</p>
+        <p>{{ form.apellido.label }} {{ form.apellido(class='form-control') }}</p>
+        <p>{{ form.descripcion.label }} {{ form.descripcion(class='form-control') }}</p>
+        <p>{{ form.educacion.label }} {{ form.educacion(class='form-control') }}</p>
+        <p>{{ form.idiomas.label }} {{ form.idiomas(class='form-control') }}</p>
+        <p>{{ form.experiencia.label }} {{ form.experiencia(class='form-control') }}</p>
+        <p>{{ form.skills.label }} {{ form.skills(class='form-control') }}</p>
+        <p>{{ form.contacto.label }} {{ form.contacto(class='form-control') }}</p>
+        <p>{{ form.image.label }} {{ form.image(class='form-control') }}</p>
+        <p>{{ form.submit(class='btn btn-default') }}</p>
+    </form>
+</div>
+{% endblock %}

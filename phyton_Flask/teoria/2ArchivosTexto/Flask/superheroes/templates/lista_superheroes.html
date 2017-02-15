@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heroes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <h1>Heroes</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Sexo</th>
+        </tr>
+        {% for heroe in heroes %}
+        <tr>
+            <td>{{ heroe.nombre }}</td>
+            <td>{{ heroe.descripcion }}</td>
+            <td>{{ heroe.get_sexo() }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="{{ url_for('guardar') }}" method="post">
+        <input type="text" name="nombre" id="nombre"><br>
+        <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+        <input type="radio" name="sexo" id="sexo1" value="1">Mujer<br>
+        <input type="radio" name="sexo" id="sexo2" value="2">Hombre
+        <input type="submit">
+    </form>
+</body>
+</html>

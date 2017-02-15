@@ -1,0 +1,38 @@
+{% extends 'layouts/master.html' %}
+{% block title %}Productos{% endblock %}
+{% block body %}
+<a href="{{ url_for('new') }}" class="btn">Nuevo producto</a>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="row">
+            {% for item in items %}
+            <div class="col-sm-4">
+                <img src="{{ url_for('static', filename=item.imagen) }}" class="img-responsive" alt="{{ item.nombre }}">
+                <h2>{{ item.nombre }}</h2>
+                <p>{{ item.descripcion }}</p>
+                <p>{{ item.precio }}€</p>
+                <p>
+                    <a href="{{ url_for('add', id=item.id)}}"><button>+</button></a>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <!-- Carrito -->
+        <ul>
+            {% for producto in carrito %}
+                {% for item in items %}
+                    {% if item.id == producto %}
+                        <li>{{ item.nombre }}: {{ item.precio }} &euro;</li>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </ul>
+        {% if carrito %}
+        <hr>
+        <h3>Total: {{ total }}&euro;</h3>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

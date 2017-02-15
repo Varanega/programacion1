@@ -1,0 +1,13 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Nueva nota{% endblock %}
+{% block body %}
+<h1 class="text-center">Nueva nota</h1>
+<div class="container">
+    <form method="post" action="">
+        {{ form.csrf_token }}
+        <p>{{ form.title.label }}{{ form.title(class="form-control") }}</p>
+        <p>{{ form.note.label }}{{ form.note(class="form-control") }}</p>
+        <p>{{ form.submit(class="btn") }}</p>
+    </form>
+</div>
+{% endblock %}

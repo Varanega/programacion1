@@ -1,0 +1,9 @@
+<!doctype html>
+<html>
+	<body>
+		<h1>Generos</h1>
+		{% for item in generos %}
+		<p><input type="radio" name="generos" value="{{ item }}"> {{ generos[item] }}</p>
+		{% endfor %}
+	</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'layouts/master.html' %}
+{% block title %}Contact{% endblock %}
+{% block body %}
+<h2>Contacta</h2>
+<form action="#" method="post">
+    {{ form.csrf_token }}
+    {{ form.name.label }}: {{ form.name() }}
+    {{ form.email.label }}: {{ form.email() }}
+    {{ form.phone.label }}: {{ form.phone() }}
+    {{ form.message.label }}: {{ form.message() }}
+    {{ form.submit() }}
+</form>
+{% endblock %}
