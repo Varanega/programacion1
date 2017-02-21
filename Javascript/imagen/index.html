@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		#jumbotron{
+			width: 100%;
+			background-repeat: no-repeat;
+			background-image: url(https://source.unsplash.com/random);
+			background-size: cover;
+		}
+	</style>
+</head>
+<body>
+	<div id="jumbotron"></div>
+	<script>
+		let altura = window.innerHeight;
+		let jumbotron = document.querySelector('#jumbotron');
+		jumbotron.style.height = altura + 'px';
+	</script>
+</body>
+</html>

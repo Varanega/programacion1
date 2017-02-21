@@ -1,0 +1,40 @@
+body {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-image: url(http://www.bestfon.info/images/joomgallery/originals/paisajes_18/mar_transparente_tropical_20150403_1792891221.jpg);
+  background-size: cover;
+  color: black;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin-top: 2em;
+}
+
+div#editor {
+  width: 400px;
+  background-color: orange;
+  position: fixed;
+  right: 0;
+  top: 20%;
+  padding: 3em;
+  text-align: center;
+}
+div#editor input, div#editor textarea {
+  margin: 2em 0;
+}
+
+/*# sourceMappingURL=main.css.map */

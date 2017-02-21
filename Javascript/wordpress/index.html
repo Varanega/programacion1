@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Wordpress</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+	<header id="header">
+		<h1 id="tituloHeader">Escribe el título</h1>
+	</header>
+	<div class="container">
+		<p id="contenidoHTML">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, sequi magnam corporis! Et mollitia laboriosam cumque odit quod, cupiditate iure aut asperiores nesciunt, eveniet eligendi sed fugiat accusamus praesentium, numquam.</p>
+	</div>
+	<div id="editor">
+		<form>
+			<input type="text" id="titulo" placeholder="Escribe tu título" class="form-control" onkeyup="guardar()" value="Escribe tu título">
+			<textarea id="contenido" placeholder="Escribe el contenido de tu página" class="form-control" onkeyup="guardar()" value="Escribe tu contenido"></textarea>
+			<input type="text" id="imagen" placeholder="URL Imagen" class="form-control" onchange="guardar()">
+			<input type="color" id="colorTexto" class="form-control" value="#000">
+			<input type="button" class="btn" value="Salvar" onclick="guardar()">
+		</form>
+	</div>
+	<script src="js/main.js"></script>
+</body>
+</html>
