@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>ContactForm</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1>Contacto</h1>
+		<ul id="errores"></ul>
+		<form action="" method="post" onsubmit="return enviarMensaje()">
+			<div id="groupNombre" class="form-group">
+				<input type="text" name="name" id="name" class="form-control" placeholder="Nombre">
+				<label class="control-label" for="nombre"></label>
+			</div>
+			<div id="groupEdad" class="form-group">
+				<input type="text" name="edad" id="edad" class="form-control" placeholder="Edad">
+				<label class="control-label" for="edad"></label>
+			</div>
+			<div id="groupEmail" class="form-group">
+				<input type="text" name="email" id="email" class="form-control" placeholder="Email">
+				<label class="control-label" for="email"></label>
+			</div>
+			<div id="groupMensaje" class="form-group">
+				<textarea name="mensaje" id="mensaje" class="form-control" placeholder="Mensaje"></textarea>
+				<label class="control-label" for="mensaje"></label>
+			</div>
+			<input type="submit" value="Enviar" class="btn">
+		</form>
+	</div>
+	<script>
+	let nombre = document.querySelector('#name');
+	let groupNombre = document.querySelector('#groupNombre');
+	let edad = document.querySelector('#edad');
+	let groupEdad = document.querySelector('#groupEdad');
+	let email = document.querySelector('#email');
+	let groupEmail = document.querySelector('#groupEmail');
+	let mensaje = document.querySelector('#mensaje');
+	let groupMensaje = document.querySelector('#groupMensaje');
+
+	let enviarMensaje = function() {
+		//limpiamos los errores anteriores
+		let formgroup = document.querySelectorAll('.form-group');
+		for(item of formgroup) {
+			item.classList.remove('has-error');
+			item.querySelector('label').innerHTML = '';
+		}
+		// Validar nombre
+		if(nombre.value.length == 0) {
+			groupNombre.classList.add('has-error');
+			groupNombre.querySelector('label').innerHTML = 'Debes rellenar el nombre';
+			return false;
+		}
+		// Validar edad
+		if(isNaN(edad.value)) {
+			groupEdad.classList.add('has-error');
+			groupEdad.querySelector('label').innerHTML = 'No ha introducido una edad válida';
+			return false;
+		}
+		if(edad.value.length == 0) {
+			groupEdad.classList.add('has-error');
+			groupEdad.querySelector('label').innerHTML = 'La edad es obligatoria';
+			return false;
+		}
+		// Validar email
+		emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+		if (!emailRegex.test(email.value)) {
+			groupEmail.classList.add('has-error');
+			groupEmail.querySelector('label').innerHTML = 'El email no es correcto';
+			return false;
+		}	
+		// Validar mensaje
+		if(mensaje.value.length <= 10) {
+			groupMensaje.classList.add('has-error');
+			groupMensaje.querySelector('label').innerHTML = 'Debe tener un mínimo de 10 palabras';
+			return false;
+		}
+		return true;
+	}
+	</script>
+</body>
+</html>

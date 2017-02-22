@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Juego</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style>
+		body{
+			background-color: seagreen;
+		}
+		.carta{
+			width: 100px;
+			height: 150px;
+			border: 5px solid white;
+			border-radius: 10px;
+			background: darkred;
+			color: darkred;
+			margin: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			box-shadow: 0px 2px 2px 2px black;
+			transition: .3s all;
+		}
+		.carta:hover{
+			cursor: pointer;
+			transform: scale(1.2);
+		}
+		.visible{
+			color: black;
+			background-color: white;
+			font-size: 4em;
+		}
+		.container{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+		h1{
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="text-center">Juego de memorizar</h1>
+	<div class="container" id="tablero">
+	</div>
+	<script>
+		let tablero = document.querySelector('#tablero');
+		let numCartas = 24;
+		let cartas = [];
+		// Funciones
+		let mostrar = function(){
+			this.classList.add('visible');
+		}
+		//Seleccionamos las cartas
+		for(let i = 0; i < numCartas; i++){
+			cartas.push('\u2764');
+		}
+		// Mostramos las cartas
+		for(let i = 0; i < numCartas; i++){
+			tablero.innerHTML += `<div class="carta">${cartas[i]}</div>`;
+			// tablero.innerHTML = '<div class="carta"></div>' + tablero.innerHTML;
+		}
+		// Anyadimos eventos a las cartas
+		let cartasTablero = document.querySelectorAll('.carta');
+		for( let carta of cartasTablero){
+			carta.addEventListener('click', mostrar,false);
+		}
+
+	</script>
+</body>
+</html>

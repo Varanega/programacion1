@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style>
+		#bloqueadorEdad {
+			display: none;
+			justify-content: center;
+			align-items: center;
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, .7); 
+		}
+	</style>
+</head>
+<body>
+	<h1>Tractores</h1>
+	<h2>Nacionales</h2>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo esse, repudiandae optio quaerat laboriosam iste minima similique aut sapiente error velit accusamus aperiam. Consectetur sint id nobis quibusdam libero dolore.
+	</p>
+	<div id="bloqueadorEdad">
+		<form action="" id="formEdad">
+			<select name="" id="edad" class="form-control">
+			</select>
+			<input type="button" id="botonEdad" value="comprobar" class="btn">
+		</form>
+	</div>
+	<script>
+		// Generar options de select
+		const EDAD_LEGAL = 18;
+		let edad = document.querySelector('#edad');
+		let inicioAnyo = 1900;
+		let finalAnyo = new Date().getFullYear();
+		let htmlOptions = '';
+
+		for(let i = inicioAnyo; i <= finalAnyo; i++) {
+			htmlOptions += `<option value="${i}">${i}</option>`;
+		}
+		edad.innerHTML = htmlOptions;
+		// Mostrar bloqueado de edad
+		let tiempoParaMostrar = 1500;
+		let bloqueadorEdad = document.querySelector('#bloqueadorEdad');
+		setTimeout(function() {
+			bloqueadorEdad.style.display = 'flex';
+		}, tiempoParaMostrar);
+		// Validaciones
+		let botonEdad = document.querySelector('#botonEdad');
+		botonEdad.addEventListener('click', function(){
+			let anyoSeleccionado = edad.value;
+			if(anyoSeleccionado <= (finalAnyo - EDAD_LEGAL)){
+				// es adulto
+				bloqueadorEdad.style.display = 'none';
+			} else {
+				document.location = 'http://google.es/';
+			}
+		}, false);
+	</script>
+</body>
+</html>

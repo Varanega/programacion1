@@ -1,0 +1,6 @@
+Contacto de mi web
+
+Nombre: {{ nombre }}
+Edad: </strong>{{ edad }}
+Email: {{ email }}
+Mensaje: {{ mensaje }}
