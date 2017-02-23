@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="errores"></div>
+    <form action="" onsubmit="return comprobaciones()">
+        <input type="text" id="dni">
+        <input type="submit" value="Comprobar">
+    </form>
+    <script>
+        let comprobaciones = function() {
+            let dni = document.querySelector('#dni');
+            let errores = document.querySelector('#errores');
+            // Comprobaciones
+            if (dni.value == '') {
+                errores.innerHTML = 'debe rellenar el DNI';
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>

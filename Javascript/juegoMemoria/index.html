@@ -46,28 +46,68 @@
 	<div class="container" id="tablero">
 	</div>
 	<script>
+		// Variables
 		let tablero = document.querySelector('#tablero');
 		let numCartas = 24;
 		let cartas = [];
+		let primeraCarta = '';
+		let segundaCarta = '';
+		let tiempo = 1000;
 		// Funciones
 		let mostrar = function(){
+			// mostramos la carta
 			this.classList.add('visible');
+			// obtenemos las cartas
+			if(primeraCarta == '') {
+				primeraCarta = this;
+			}else{
+				segundaCarta = this;
+			}
+			if(primeraCarta.innerHTML== segundaCarta.innerHTML) {
+				primeraCarta.setAttribute('good', 'true');
+				segundaCarta.setAttribute('good', 'true');
+			}else if(primeraCarta != '' && segundaCarta != ''){
+			}
+			// Limpiamos
+			if(primeraCarta != '' && segundaCarta != '') {
+				primeraCarta = '';
+				segundaCarta = '';
+				// Tapamos las cartas
+				cartasMesa = document.querySelectorAll('.carta');
+				for(let carta of cartasMesa) {
+					if(carta.getAttribute('good') == 'false') {
+						setTimeout(function() {
+							carta.classList.remove('visible');
+						}, tiempo)
+					}
+				}
+			}
 		}
-		//Seleccionamos las cartas
-		for(let i = 0; i < numCartas; i++){
-			cartas.push('\u2764');
+		//Seleccionamos las cartas y anyadimos numeros
+		for(let i = 0; i < numCartas / 2; i++){
+			cartas.push(i);
+			cartas.push(i);
 		}
+		let cartasMezcladas = []
+		let posAzar;
+		for( let i = 0; i < numCartas; i++){
+			posAzar = Math.round(Math.random() * (cartas.length - 1));
+			// Anaydimos
+			cartasMezcladas.push(cartas[posAzar]);
+			// Borramos
+			cartas.splice(posAzar,1);
+		}
+
 		// Mostramos las cartas
 		for(let i = 0; i < numCartas; i++){
-			tablero.innerHTML += `<div class="carta">${cartas[i]}</div>`;
+			tablero.innerHTML += `<div class="carta" good="false">${cartasMezcladas[i]}</div>`;
 			// tablero.innerHTML = '<div class="carta"></div>' + tablero.innerHTML;
 		}
 		// Anyadimos eventos a las cartas
 		let cartasTablero = document.querySelectorAll('.carta');
 		for( let carta of cartasTablero){
-			carta.addEventListener('click', mostrar,false);
+			carta.addEventListener('click', mostrar, false);
 		}
-
 	</script>
 </body>
 </html>

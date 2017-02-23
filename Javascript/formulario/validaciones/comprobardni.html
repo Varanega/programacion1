@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Comprobar DNI</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<input type="text" class="control-label" placeholder="DNI" id="dni">
+	<label class="control-label" for="dni"></label>
+	<input type="button" id="boton" value="comprobar" class="btn">
+	<script>
+		boton.addEventListener('click', function nif(dni){
+			dni = document.querySelector('#dni').value;
+			let numero
+			let letr
+		  	let letra
+		  	let expresion_regular_dni
+
+		  	expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+		 
+		  	if(expresion_regular_dni.test (dni) == true){
+		    	numero = dni.substr(0,dni.length-1);
+		     	letr = dni.substr(dni.length-1,1);
+		     	numero = numero % 23;
+		     	letra='TRWAGMYFPDXBNJZSQVHLCKET';
+		     	letra=letra.substring(numero,numero+1);
+		    	if (letra!=letr.toUpperCase()) {
+		    		dni.classList.add('has-error');
+		     	}else{
+		       		dni.classList.add('has-success');
+		     	}
+		  	}else{
+		    	alert('Dni erroneo, formato no válido');
+		   	}
+		}, false);
+	</script>
+</body>
+</html>
