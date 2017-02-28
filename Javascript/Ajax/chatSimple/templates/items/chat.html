@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        #mensajes {
+            width: 500px;
+            height: 500px;
+            overflow-y: auto;
+            border: 1px solid lightslategray;
+            margin: 1em 0;
+            padding: 1em;
+        }
+        
+        #container {
+            margin: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <center id="container">
+        <input type="text" name="apodo" id="apodo" placeholder="apodo">
+        <div id="mensajes"></div>
+        <input type="text" id="mensaje" placeholder="mensaje">
+        <input type="button" id="enviar" value="Enviar">
+    </center>
+    <script>
+        let mensajes = document.querySelector('#mensajes');
+        let boton = document.querySelector('#enviar');
+        let refresh_time = 500;
+        let xhttp = new XMLHttpRequest();
+        // Obtener mensaje
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                mensajes.innerHTML = this.responseText;
+            }
+        };
+
+        let interval_refresh = setInterval(function(){
+            xhttp.open('GET', '{{ url_for('get') }}', true);
+            xhttp.send();
+        }, refresh_time);
+        // Enviar mensaje
+        let enviar = function() {
+            // Maquetamos el mensaje
+            let apodo = document.querySelector('#apodo');
+            let contenido = document.querySelector('#mensaje');
+            let final = encodeURIComponent(apodo.value + ':' + contenido.value);
+            peticion = "mensaje_nuevo=" + final + "&nocache=" + Math.random();
+            xhttp.open('POST', '{{ url_for('add') }}', true);
+            xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhttp.send(peticion);
+
+        }
+        // Escuchamos el click
+        boton.addEventListener('click', enviar, false);
+    </script>
+</body>
+
+</html>
